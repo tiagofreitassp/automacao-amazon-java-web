@@ -44,12 +44,14 @@ public class amazonSteps extends DriverWeb {
         geradorPDF.evidenciaElemento("Clicar em Menu Todos", page.getCurrentRunningDriver());
         page.clicar(By.xpath(v.btnMenuTodos));
 
-        page.scrollDownClick(By.xpath(v.txtComprarPorCategoria));
+        page.moverParaElemento(By.xpath(v.txtComprarPorCategoria));
+        page.clicar(By.xpath(v.txtComprarPorCategoria));
 
         geradorPDF.evidenciaElemento("Clicar em Ver Tudo", page.getCurrentRunningDriver());
-        page.scrollDownClick(By.xpath(v.btnComprarPorCategoria_VerTudo));
-        page.moverParaElemento(By.xpath(v.btnComprarPorCategoria_Livros));
+        page.moverParaElemento(By.xpath(v.btnComprarPorCategoria_VerTudo));
+        page.clicar(By.xpath(v.btnComprarPorCategoria_VerTudo));
 
+        page.moverParaElemento(By.xpath(v.btnComprarPorCategoria_Livros));
         geradorPDF.evidenciaElemento("Clicar em Livros", page.getCurrentRunningDriver());
         page.clicar(By.xpath(v.btnComprarPorCategoria_Livros));
     }
@@ -65,6 +67,5 @@ public class amazonSteps extends DriverWeb {
         String titulo = "Livros de HQs, Mangás, Graphic Novels, Quadrinhos | Amazon.com.br";
         page.validarTextoPaginaWeb(titulo);
         geradorPDF.evidenciaElemento("Validar titulo da página", page.getCurrentRunningDriver());
-        page.esperar(4000);
     }
 }
