@@ -9,4 +9,8 @@ public class amazonVariaveis {
     @FindBy public String btnComprarPorCategoria_HQSMANGAS = "//a[contains(text(),'HQs e Mangás')]";//xpath
 
     @FindBy public String txtComprarPorCategoria = "//div[contains(text(),'comprar por categoria')]";//xpath
+    @FindBy public String txtOsMaisDesejados = "//span[contains(text(),'Os mais desejados')]";//xpath
+    @FindBy public String txtOsMaisDesejados_NomeLivro = "//*[@id=\"acs-product-block-0\"]/a/span/span[2]";//xpath
+    @FindBy public String txtOsMaisDesejados_NomeAutor = "//*[@id=\"acs-product-block-0\"]/span/span[2]";//xpath
+    @FindBy public String txtAmazonCNPJ = "//li[contains(text(),'Amazon Serviços de Varejo do Brasil Ltda. | CNPJ 1')]";//xpath
 }

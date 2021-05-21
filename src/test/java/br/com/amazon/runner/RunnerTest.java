@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/java/br/com/amazon/features/amazon.feature",
 
         glue = "br.com.amazon.steps",
-        tags = {"@Cenario1"},
+        tags = {"@Amazon"},
 
         plugin = "pretty",
 

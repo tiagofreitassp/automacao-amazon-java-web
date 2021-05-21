@@ -1,6 +1,7 @@
 package br.com.amazon.base;
 
 import br.com.amazon.driver.DriverWeb;
+import br.com.amazon.utils.InfraUtils;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.util.Units;
 import org.apache.poi.xwpf.usermodel.Document;
@@ -88,6 +89,8 @@ public class BasePage extends DriverWeb {
     public void validarTexto(By by, String texto) throws MalformedURLException {
         aguardarElemento(by);
         selecionarElemento(by);
+        System.out.println("Texto esperado: "+texto);
+        System.out.println("Texto obtido: "+obterTexto(by));
         Assert.assertEquals(texto, obterTexto(by));
     }
 
@@ -116,6 +119,12 @@ public class BasePage extends DriverWeb {
         aguardarElemento(by);
         WebElement el = driver.findElement(by);
         driver.switchTo().frame(el);
+    }
+
+    public WebElement getListClick(By by, int posicao){
+        List<WebElement> listaElementos = driver.findElements(by);
+        WebElement p = listaElementos.get(0);
+        return p;
     }
 
     public String obterTexto(By by) throws MalformedURLException {
@@ -191,7 +200,15 @@ public class BasePage extends DriverWeb {
     }
 
     public void abrirNovaAbaNavegador() {
-        driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+        String os = InfraUtils.getOsName();
+        System.out.println("Sistema Operacional: "+os);
+
+        if (os.equalsIgnoreCase("Mac") || os.equalsIgnoreCase("Unix") ||
+                os.equalsIgnoreCase("Mac OS X")) {
+            driver.findElement(By.cssSelector("body")).sendKeys(Keys.COMMAND +"t");
+        }else if (os.equalsIgnoreCase("Windows")){
+            driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL +"t");
+        }
     }
 
     public void alterarAbaNavegador(int aba) {

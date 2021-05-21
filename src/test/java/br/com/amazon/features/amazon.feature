@@ -8,3 +8,12 @@
       Dado Que eu acessei o menu Todos - Comprar Por Categoria - Livros
       E Abrir a opcao HQs e Mangas
       Entao Devo validar o titulo da pagina
+
+
+    @Cenario2
+    Cenario: Validar nome do livro e autor da pagina de HQs e mangas da Amazon
+      Dado Que eu acessei o menu Todos - Comprar Por Categoria - Livros
+      Quando Abrir a opcao HQs e Mangas em nova aba
+      E Ir na Opcao Os Mais Desejados
+      Entao Devo obter Nome do livro e autor
+      E Obter o CNPJ da Amazon
