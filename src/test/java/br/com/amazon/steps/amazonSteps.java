@@ -121,4 +121,42 @@ public class amazonSteps extends DriverWeb {
         geradorPDF.evidenciaElemento("CNPJ Amazon: "+page.obterTexto(By.xpath(v.txtAmazonCNPJ)), page.getCurrentRunningDriver());
         page.validarTexto(By.xpath(v.txtAmazonCNPJ),"Amazon Serviços de Varejo do Brasil Ltda. | CNPJ 15.436.940/0001-03");
     }
+
+    //////////////////
+
+    @Dado("Que eu acessei o menu Ofertas do Dia")
+    public void queEuAcesseiOMenuOfertasDoDia() throws MalformedURLException, InterruptedException {
+        geradorPDF.evidenciaElemento("Clicar em Ofertas do Dia", page.getCurrentRunningDriver());
+        page.clicar(By.xpath(v.btnOfertasDoDia));
+        page.validarElementoExibido(By.xpath(v.txtOfertasDoDia));
+    }
+
+    @Quando("Eu clicar em uma das ofertas do dia")
+    public void euClicarEmUmaDasOfertasDoDia() throws InterruptedException, MalformedURLException {
+        page.scroll(120);
+
+        geradorPDF.evidenciaElemento("Clicar em Ofertas 1", page.getCurrentRunningDriver());
+        page.clicar(By.xpath(v.lblOfertas1));
+        page.esperar(2500);
+        geradorPDF.evidenciaElemento("Resultado Ofertas 1", page.getCurrentRunningDriver());
+
+        page.esperar(1000);
+
+        geradorPDF.evidenciaElemento("Clicar em Ofertas 2", page.getCurrentRunningDriver());
+        page.clicar(By.xpath(v.lblOfertas2));
+        page.esperar(2500);
+        geradorPDF.evidenciaElemento("Resultado Ofertas 2", page.getCurrentRunningDriver());
+
+        page.esperar(1000);
+
+        geradorPDF.evidenciaElemento("Clicar em Ofertas 3", page.getCurrentRunningDriver());
+        page.clicar(By.xpath(v.lblOfertas3));
+        page.esperar(2500);
+        geradorPDF.evidenciaElemento("Resultado Ofertas 3", page.getCurrentRunningDriver());
+    }
+
+    @Entao("Devo visualizar a lista dos produtos")
+    public void devoVisualizarAListaDosProdutos() throws MalformedURLException, InterruptedException {
+        geradorPDF.evidenciaElemento("Opções selecionadas", page.getCurrentRunningDriver());
+    }
 }

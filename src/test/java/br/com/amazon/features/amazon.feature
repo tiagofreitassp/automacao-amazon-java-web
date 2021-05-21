@@ -17,3 +17,10 @@
       E Ir na Opcao Os Mais Desejados
       Entao Devo obter Nome do livro e autor
       E Obter o CNPJ da Amazon
+
+
+    @Cenario3
+    Cenario: Validar lista de produtos Ofertas do Dia da Amazon
+      Dado Que eu acessei o menu Ofertas do Dia
+      Quando Eu clicar em uma das ofertas do dia
+      Entao Devo visualizar a lista dos produtos
