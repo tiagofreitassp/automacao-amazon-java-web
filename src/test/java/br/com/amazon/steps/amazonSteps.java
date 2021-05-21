@@ -12,9 +12,8 @@ import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 
 public class amazonSteps extends DriverWeb {
@@ -26,6 +25,9 @@ public class amazonSteps extends DriverWeb {
     public String link = "https://www.amazon.com.br/";
     private Scenario cenario;
     private String nomeDoCenario;
+    private String nomeDoLivro;
+    private String nomeDoAutor;
+    private String amazonaCNPJ;
 
     public String navegador = chrome;
 
@@ -33,7 +35,7 @@ public class amazonSteps extends DriverWeb {
     public void setUp(Scenario cenario) throws Exception {
         this.cenario = cenario;
         nomeDoCenario = this.cenario.getName();
-        geradorPDF = new GeradorPDF(this.cenario, this.cenario.getName());
+        geradorPDF = new GeradorPDF(this.cenario, this.nomeDoCenario);
         page.criarDriverWeb(navegador,link);
     }
 
@@ -67,7 +69,7 @@ public class amazonSteps extends DriverWeb {
     }
 
     @Entao("Devo validar o titulo da pagina")
-    public void devoValidarOTituloDaPagina() throws MalformedURLException, InterruptedException {
+    public void devoValidarOTituloDaPagina() throws IOException, InterruptedException {
         String titulo = "Livros de HQs, Mangás, Graphic Novels, Quadrinhos | Amazon.com.br";
         page.validarTextoPaginaWeb(titulo);
         geradorPDF.evidenciaElemento("Validar titulo da página", page.getCurrentRunningDriver());
@@ -105,21 +107,22 @@ public class amazonSteps extends DriverWeb {
 
     @Entao("Devo obter Nome do livro e autor")
     public void devoObterNomeDoLivroEAutor() throws MalformedURLException {
-        String nomeDoLivro = page.obterTexto(By.xpath(v.txtOsMaisDesejados_NomeLivro));
-        String nomeDoAutor = page.obterTexto(By.xpath(v.txtOsMaisDesejados_NomeAutor));
-        System.out.println("Nome do livro: "+nomeDoLivro);
-        System.out.println("Nome do autor: "+nomeDoAutor);
+        this.nomeDoLivro = page.obterTexto(By.xpath(v.txtOsMaisDesejados_NomeLivro));
+        this.nomeDoAutor = page.obterTexto(By.xpath(v.txtOsMaisDesejados_NomeAutor));
+        System.out.println("Nome do livro: "+this.nomeDoLivro);
+        System.out.println("Nome do autor: "+this.nomeDoAutor);
 
-        geradorPDF.evidenciaElemento("Nome do Livro: "+nomeDoLivro, page.getCurrentRunningDriver());
-        geradorPDF.evidenciaElemento("Nome do Autor: "+nomeDoAutor, page.getCurrentRunningDriver());
+        geradorPDF.evidenciaElemento("Nome do Livro: "+this.nomeDoLivro, page.getCurrentRunningDriver());
+        geradorPDF.evidenciaElemento("Nome do Autor: "+this.nomeDoAutor, page.getCurrentRunningDriver());
     }
 
     @Entao("Obter o CNPJ da Amazon")
-    public void obterOCNPJDaAmazon() throws InterruptedException, MalformedURLException {
+    public void obterOCNPJDaAmazon() throws InterruptedException, IOException {
         page.scroll(999);
         page.moverParaElemento(By.xpath(v.txtAmazonCNPJ));
         geradorPDF.evidenciaElemento("CNPJ Amazon: "+page.obterTexto(By.xpath(v.txtAmazonCNPJ)), page.getCurrentRunningDriver());
         page.validarTexto(By.xpath(v.txtAmazonCNPJ),"Amazon Serviços de Varejo do Brasil Ltda. | CNPJ 15.436.940/0001-03");
+        this.amazonaCNPJ = page.obterTexto(By.xpath(v.txtAmazonCNPJ));
     }
 
     //////////////////
