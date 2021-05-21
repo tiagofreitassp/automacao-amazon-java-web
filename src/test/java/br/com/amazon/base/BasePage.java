@@ -23,11 +23,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class BasePage extends DriverWeb {
+public class BasePage {
     public Boolean isPresent;
     public WebDriverWait wait;
+    private WebDriver driver;
     private static String nomePasta;
     private File pastaEvidencias;
+
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void clicarRadioButton(int posicao) throws InterruptedException {
         esperar(800);
