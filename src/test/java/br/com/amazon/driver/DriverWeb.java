@@ -26,7 +26,7 @@ public class DriverWeb {
         if (os.equalsIgnoreCase("Mac") || os.equalsIgnoreCase("Unix") ||
                 os.equalsIgnoreCase("Mac OS X")) {
             System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
-        }else if (os.equalsIgnoreCase("Windows")){
+        }else if (os.equalsIgnoreCase("Windows") || os.equalsIgnoreCase("Windows 10")){
             System.setProperty("webdriver.chrome.driver", ".//drivers//chromedriver.exe");
         }
         driver = new ChromeDriver();
