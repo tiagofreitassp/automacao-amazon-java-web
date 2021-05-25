@@ -1,6 +1,7 @@
 package br.com.amazon.driver;
 
 import br.com.amazon.utils.InfraUtils;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -25,10 +26,13 @@ public class DriverWeb {
 
         if (os.equalsIgnoreCase("Mac") || os.equalsIgnoreCase("Unix") ||
                 os.equalsIgnoreCase("Mac OS X")) {
-            System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
+            //System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
         }else if (os.equalsIgnoreCase("Windows") || os.equalsIgnoreCase("Windows 10")){
-            System.setProperty("webdriver.chrome.driver", ".//drivers//chromedriver.exe");
+            //System.setProperty("webdriver.chrome.driver", ".//drivers//chromedriver.exe");
         }
+        //Com o codigo abaixo não é necessario baixar cada versao do WebDriver do G Chrome.
+        WebDriverManager.chromedriver().setup();
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get(url);
