@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = "br.com.amazon.steps",
         tags = {"@Amazon"},
 
-        plugin = "pretty",
+        plugin = {"pretty", "html:evidencias/html/evidence-html"},
 
         monochrome = true,
 
