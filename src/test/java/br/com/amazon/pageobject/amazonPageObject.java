@@ -38,6 +38,7 @@ public class amazonPageObject {
         geradorPDF.evidenciaElemento("Clicar em Menu Todos");
         page.clicar(By.xpath(v.btnMenuTodos));
 
+        page.esperar(1600);
         page.moverParaElemento(By.xpath(v.txtComprarPorCategoria));
         page.clicar(By.xpath(v.txtComprarPorCategoria));
 
@@ -86,7 +87,7 @@ public class amazonPageObject {
     public void irNaOpcaoOsMaisDesejados() throws InterruptedException {
         page.scroll(150);
         page.moverParaElemento(By.xpath(v.txtOsMaisDesejados));
-        geradorPDF.evidenciaElemento("Acessar Os Mais Desejados");
+        geradorPDF.evidenciaElemento("Acessar Os mais desejados");
     }
 
     public void devoObterNomeDoLivroEAutor() throws MalformedURLException {

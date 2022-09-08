@@ -19,6 +19,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -138,7 +139,7 @@ public class BasePage {
     }
 
     public void aguardarElemento(By by) {
-        wait = new WebDriverWait(driver, 15);
+        wait = new WebDriverWait(driver, Duration.ofMillis(15));
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 
