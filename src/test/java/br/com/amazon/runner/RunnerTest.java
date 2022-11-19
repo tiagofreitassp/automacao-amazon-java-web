@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/test/java/br/com/amazon/features/amazon.feature",
 
         glue = "br.com.amazon.steps",
-        tags = {"@Amazon"},
+        tags = "@Amazon",
 
         plugin = {"pretty", "html:evidencias/html/evidence-html"},
 
@@ -17,9 +17,9 @@ import org.junit.runner.RunWith;
 
         snippets = CucumberOptions.SnippetType.CAMELCASE,
 
-        dryRun = false,
+        dryRun = false
 
-        strict = true
+        //strict = true
 )
 public class RunnerTest {
 }
