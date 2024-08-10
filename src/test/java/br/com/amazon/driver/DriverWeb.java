@@ -24,12 +24,6 @@ public class DriverWeb {
         String os = InfraUtils.getOsName();
         System.out.println("Sistema Operacional: "+os);
 
-        if (os.equalsIgnoreCase("Mac") || os.equalsIgnoreCase("Unix") ||
-                os.equalsIgnoreCase("Mac OS X")) {
-            //System.setProperty("webdriver.chrome.driver", "./drivers/chromedriver");
-        }else if (os.equalsIgnoreCase("Windows") || os.equalsIgnoreCase("Windows 10")){
-            //System.setProperty("webdriver.chrome.driver", ".//drivers//chromedriver.exe");
-        }
         //Com o codigo abaixo não é necessario baixar cada versao do WebDriver do G Chrome.
         WebDriverManager.chromedriver().setup();
 
