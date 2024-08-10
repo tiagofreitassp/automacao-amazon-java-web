@@ -6,7 +6,7 @@ Scripts de automação web desenvolvido com Java, Cucumber, jUnit e Selenium.
 * Realizar consultas na amazon
 
 ## Tecnologias:
-* [Java JDK 8](https://www.oracle.com/br/java/technologies/javase-downloads.html)
+* [Java JDK 8+](https://www.oracle.com/br/java/technologies/javase-downloads.html)
 * [Maven](https://maven.apache.org)
 * [Maven dependency](https://mvnrepository.com)
 * [WebDriver Manager](https://github.com/bonigarcia/webdrivermanager)
